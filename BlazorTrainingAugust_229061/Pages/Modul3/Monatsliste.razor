@@ -12,7 +12,8 @@
                     @for (int i = 0; i < 12; i++)
                 {
                     var m = i;
-                    <li class="list-group-item list-group-item-action" @onclick="()=>Select(m)">
+                    <li class='list-group-item list-group-item-action @(Monat==DateTime.Now.AddMonths(i).ToString("MMMM")?"active":"")'
+                    @onclick="()=>Select(m)">
                         @DateTime.Now.AddMonths(i).ToString("MMMM")
                     </li>
                     }
