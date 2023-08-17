@@ -3,7 +3,13 @@
 <p @onclick="click">paragraph
     <input @onclick="click" @onclick:stopPropagation @bind="Wert" @onkeydown="keydown" />
     @Wert
-    <input @ref="eins" @bind="Wert" @bind:event="oninput"/>
+    <input @ref="eins" @bind="Wert" @bind:event="oninput" />
+    <br/>
+    <input value="@Wert"  />
+    <br />
+    <input value="@Wert" @onchange="(_)=>Wert=_.Value.ToString()" />
+
+
 </p>
 @code {
     string Wert;
