@@ -1,0 +1,13 @@
+﻿@page "/hannes/{id:int?}"
+@page "/sepp"
+@page "/anita/{str?}/{str1?}"
+<h3>RouteSample @id @str</h3>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    [Parameter]
+    public string str { get; set; }
+    [Parameter]
+    public string str1 { get; set; }
+}
