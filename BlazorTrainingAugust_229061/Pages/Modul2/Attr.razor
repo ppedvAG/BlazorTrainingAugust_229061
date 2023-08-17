@@ -1,0 +1,22 @@
+﻿@page "/attr"
+<h3>Attr</h3>
+<p @onclick="click">paragraph
+    <input @onclick="click" @onclick:stopPropagation @bind="Wert" @onkeydown="keydown" />
+    @Wert
+    <input @ref="eins" @bind="Wert" @bind:event="oninput"/>
+</p>
+@code {
+    string Wert;
+    ElementReference eins;
+    void click()
+    {
+
+    }
+    void keydown(KeyboardEventArgs args)
+    {
+        if (args.Key=="A")
+        {
+            eins.FocusAsync();
+        }
+    }
+}
