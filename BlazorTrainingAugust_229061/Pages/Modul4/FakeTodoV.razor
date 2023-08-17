@@ -1,0 +1,51 @@
+﻿@page "/todoV"
+@inject IHttpClientFactory client
+<h3>FakeTodo</h3>
+
+<div class="row">
+
+    <div class="col">
+        <ul class="list-group">
+          
+            @if (Liste == null)
+            {
+                <li class='list-group-item '>
+                    keine Daten
+                </li>
+            }
+            else
+            {
+                <Virtualize Items="Liste" OverscanCount="5" Context="item" ItemSize="20" >
+
+                    <ItemContent>
+                        <li class='list-group-item '>
+                            @item.title
+                        </li>
+                    </ItemContent>
+                    <Placeholder >
+                            <li class='list-group-item '>
+                                keine Daten
+                            </li>
+                            
+                    </Placeholder>
+                </Virtualize>
+               
+            }
+        </ul>
+    </div>
+
+</div>
+
+@code {
+    string eingabe = "";
+    List<ToDoModel> Liste;
+    protected override async Task OnInitializedAsync()
+    {
+        using (var http = client.CreateClient())
+        {
+            Liste = await http.GetFromJsonAsync<List<ToDoModel>>("https://jsonplaceholder.typicode.com/todos");
+        }
+
+    }
+
+}
