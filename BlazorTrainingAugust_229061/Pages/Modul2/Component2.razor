@@ -1,0 +1,9 @@
+﻿<div @attributes="MyProperty">
+    <h3>Component2</h3>
+    <p>Text</p>
+</div>
+
+@code {
+    [Parameter(CaptureUnmatchedValues =true)]
+    public Dictionary<string,object> MyProperty { get; set; }
+}
