@@ -1,0 +1,29 @@
+﻿@page "/event/{id}"
+@page "/event"
+<h3>ComponentEvents</h3>
+<button @onclick="click">drück mich</button>
+<a href="event/hannes">parameterset</a>
+@code {
+    [Parameter]
+    public string id { get; set; }
+    void click()
+    {
+
+
+    }
+
+    protected override void OnInitialized()
+    {
+
+
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+
+    }
+    protected override void OnParametersSet()
+    {
+       
+    }
+}
