@@ -1,0 +1,16 @@
+﻿@page "/navi"
+@inject NavigationManager _NavigationManager
+<h3>Navi</h3>
+@_NavigationManager.Uri
+<a href="./navi/1">eins</a>
+
+@code {
+    protected override void OnInitialized()
+    {
+        _NavigationManager.LocationChanged += UrlChange;
+    }
+    void UrlChange(object sender, LocationChangedEventArgs args)
+    {
+        
+    }
+}
