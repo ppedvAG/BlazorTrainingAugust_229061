@@ -1,0 +1,11 @@
+﻿@page "/authorize"
+@attribute [Authorize(Roles ="xxx")]
+<h3>Component1</h3>
+<button @onclick="test">nix da</button>
+@code {
+    [Authorize(Roles ="nixda")]
+    void test()
+    {
+        
+    }
+}
