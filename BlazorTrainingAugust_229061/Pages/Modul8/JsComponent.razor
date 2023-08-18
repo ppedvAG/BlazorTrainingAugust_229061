@@ -1,0 +1,38 @@
+﻿@page "/js"
+@inject IJSRuntime JSRuntime
+<h3>JsComponent @Resultat</h3>
+<button @onclick="delete">löschen</button>
+<br />
+<button @onclick="delete2">löschen2</button>
+<br />
+<button @onclick="eingabe">input prompt</button>
+
+@code {
+    string Resultat;
+    async Task delete()
+    {
+        if (await JSRuntime.InvokeAsync<bool>("confirm", "wirklich löschen"))
+        {
+            Resultat = "gelöscht";
+
+        }
+    }
+    IJSObjectReference module;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./pages/modul8/JsComponent.razor.js");
+    }
+    async void delete2()
+    {
+        if (await module.InvokeAsync<bool>("ppedvPrompt", "wirklich löschen"))
+        {
+            module.DisposeAsync();
+        }
+    }
+    async  Task eingabe()
+    {
+        var m = new RazorClassLibrary1.ExampleJsInterop(JSRuntime);
+        var x=await m.Prompt("daten!");
+        Resultat = x;
+    }
+}
