@@ -1,0 +1,27 @@
+﻿<div @attributes="HtmlAttribute">
+    @Head
+   @*  @ChildContent *@
+   @Body
+</div>
+
+
+
+@code {
+    [Parameter]
+    [EditorRequired]
+    public int MyProperty { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> HtmlAttribute { get; set; }
+
+    [CascadingParameter(Name ="Hannes")]
+    public int Zahl { get; set; }
+    [CascadingParameter()]
+    public string Wert { get; set; }
+    // [Parameter]
+    // public RenderFragment ChildContent { get; set; }
+    [Parameter]
+    public RenderFragment Head { get; set; }
+    [Parameter]
+    public RenderFragment Body { get; set; }
+}

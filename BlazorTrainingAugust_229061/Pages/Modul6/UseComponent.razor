@@ -1,0 +1,26 @@
+﻿@page "/usec"
+<h3>UseComponent</h3>
+<CascadingValue Value="@("eins")">
+    <CascadingValue Value="person">
+        <CascadingValue Value="42" Name="Hannes" IsFixed="true">
+            <Component MyProperty="@Count()">
+               @*  <h1>SubSub</h1>
+                <p>text</p> *@
+                <Head>
+                    <h1>SubSub</h1>
+                </Head>
+                <Body>
+                    <p>text</p>
+                </Body>
+            </Component>
+        </CascadingValue>
+    </CascadingValue>
+</CascadingValue>
+@code {
+    int anzahl;
+    int Count()
+    {
+        return 1;
+    }
+    Modul5.Person person;
+}
