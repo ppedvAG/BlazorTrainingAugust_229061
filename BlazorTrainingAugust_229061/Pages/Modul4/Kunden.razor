@@ -16,14 +16,21 @@
 
     <div class="col">
         <ul class="list-group">
-            
-                @foreach (var item in db.Customers.Where(x=>x.CompanyName.Contains(eingabe)))
+
+            @foreach (var item in db.Customers.Where(x => x.CompanyName.Contains(eingabe)))
+            {
+                <li class='list-group-item '>
+                    <a href="/kunde/@item.CustomerId" class="btn btn-outline-primary">@item.CustomerId</a>   @item.CompanyName
+                    <button class="btn btn-outline-primary float-end" @onclick="()=>SelectedID=item.CustomerId">open </button>
+                </li>
+                @if (SelectedID == item.CustomerId)
                 {
-                    <li class='list-group-item '>
-                        @item.CompanyName
-                    </li>
+                    <KundenEdit id="SelectedID"></KundenEdit>
+
                 }
-            
+
+            }
+
         </ul>
     </div>
 
@@ -31,5 +38,6 @@
 
 @code {
     string eingabe = "";
+    string SelectedID;
 
 }
