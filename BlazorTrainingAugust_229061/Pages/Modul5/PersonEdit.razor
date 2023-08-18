@@ -1,6 +1,7 @@
 ﻿@page "/person/{id:int?}"
 <h3>PersonEdit</h3>
-<EditForm Model="VM" OnSubmit="save">
+@* <EditForm Model="VM" OnSubmit="save"> *@
+    <EditForm EditContext="ctx" OnSubmit="save">
     <DataAnnotationsValidator></DataAnnotationsValidator>
 
     <div class="mb-3 row">
@@ -39,10 +40,19 @@
     [Parameter]
     public int id { get; set; }
     Person VM = new Person();
+
+    EditContext ctx;
+    protected override void OnInitialized()
+    {
+        ctx = new EditContext(VM);
+        ctx.SetFieldCssClassProvider(new BoostrapCSSFixFieldCssClassprovider());
+
+    }
     void save(EditContext ctx)
     {
         if (ctx.Validate())
         {
+            
             //save
         }
     }
