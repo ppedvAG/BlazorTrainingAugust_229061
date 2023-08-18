@@ -1,0 +1,12 @@
+﻿@page "/useb"
+<h3>UseBindbar</h3>@* Anzahl="hannes" *@
+<Bindbar @bind-Anzahl="hannes" >
+
+</Bindbar>
+@hannes
+
+<input @bind="hannes" />
+@code {
+    int hannes = 42;
+
+}

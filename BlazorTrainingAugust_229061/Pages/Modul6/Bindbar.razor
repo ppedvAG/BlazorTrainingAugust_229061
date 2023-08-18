@@ -1,0 +1,9 @@
+﻿<h3>Bindbar</h3>
+<input @bind="Anzahl" />
+<h4>@Anzahl</h4>
+@code {
+    [Parameter]
+    public int Anzahl { get; set; }
+    [Parameter]
+    public EventCallback<int> AnzahlChanged { get; set; }
+}
