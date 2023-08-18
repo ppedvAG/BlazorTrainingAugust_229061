@@ -2,8 +2,19 @@
 <input @bind="Anzahl" />
 <h4>@Anzahl</h4>
 @code {
+
+    private int _Anzahl;
     [Parameter]
-    public int Anzahl { get; set; }
+    public int Anzahl
+    {
+        get => _Anzahl;
+        set { 
+            _Anzahl = value;
+            AnzahlChanged.InvokeAsync(value);
+
+        }
+    }
+
     [Parameter]
     public EventCallback<int> AnzahlChanged { get; set; }
 }
