@@ -1,0 +1,27 @@
+﻿@page "/modal"
+<h3>UseModal</h3>
+<button class="btn btn-primary" @onclick="open">modal</button>
+<ModalPPEDV @ref="modal1" Titel="Hallo ppedv!" OnSave="save">
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+            <input @bind="eingabe" class="form-control"></input>
+          
+        </div>
+    </div>
+
+
+</ModalPPEDV>
+@code {
+    ModalPPEDV modal1;
+    string eingabe;
+    void open()
+    {
+        modal1.Show();
+    }
+    void save()
+    {
+        eingabe = "";
+        modal1.Show();
+    }
+}

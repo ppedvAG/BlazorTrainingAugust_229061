@@ -1,0 +1,35 @@
+﻿@if (iShow)
+{
+    <div class="modal fade show" tabindex="-1" role="dialog" style="display: block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">@Titel</h1>
+                    <button type="button" class="btn-close" @onclick="Show"></button>
+                </div>
+                <div class="modal-body">
+                   @ChildContent
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="Show">Close</button>
+                    <button type="button" class="btn btn-primary" @onclick="()=>OnSave.InvokeAsync()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade show" ></div>
+}
+@code {
+    bool iShow;
+    [Parameter]
+    public string Titel { get; set; }
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    [Parameter]
+    public EventCallback OnSave { get; set; }
+    public void Show()
+    {
+        iShow = !iShow;
+        StateHasChanged();
+    }
+}
